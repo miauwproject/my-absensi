@@ -8,5 +8,5 @@
   "apkKaryawan": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code29/absensi-karyawan_v1.0.0-code29.apk",
   "apkOwner": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code30/absensi-owner_v1.0.0-code30.apk",
   "apkDev": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code28/absensi-dev_v1.0.0-code28.apk",
-  "notes": "v1.0.0 — Karyawan 29 + Owner 30 + Dev 28. Slip gaji jadi PDF beneran (jsPDF + Filesystem + Share), hapus karyawan paksa keluar, antrean Hapus Akun Auth dibersihkan."
+  "notes": "v1.0.0 \u2014 Karyawan 29 + Owner 30 + Dev 28. Slip gaji jadi PDF beneran (jsPDF + Filesystem + Share), hapus karyawan paksa keluar, antrean Hapus Akun Auth dibersihkan. Deploy via GitHub Actions."
 }
