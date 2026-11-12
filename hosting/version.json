@@ -1,12 +1,12 @@
 {
-  "versionCode": 28,
+  "versionCode": 29,
   "versionCodeKaryawan": 33,
   "versionCodeOwner": 41,
-  "versionCodeDev": 28,
+  "versionCodeDev": 29,
   "versionName": "1.0.0",
   "apkUrl": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-karyawan-code33/absensi-karyawan_v1.0.0-code33.apk",
   "apkKaryawan": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-karyawan-code33/absensi-karyawan_v1.0.0-code33.apk",
   "apkOwner": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code41/absensi-owner_v1.0.0-code41.apk",
-  "apkDev": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code28/absensi-dev_v1.0.0-code28.apk",
-  "notes": "v1.0.0 — Karyawan 33 + Owner 41 + Dev 28. Owner 41: lokasi/outlet di detail tanggal Kalender Jadwal (badge biru di samping nama karyawan) + header Owner gaya wide ala Karyawan (gradien biru, logo perusahaan lingkaran ganti profile icon, tanpa logo = ikon gedung) + kartu Jadwal & Shift hanya nama + jam shift. Owner 40: kartu Jadwal & Shift di menu Shift kini hanya tampilkan nama + jam shift (nama karyawan default dihapus). Karyawan 33: Cuti ganti Ganti Shift (jatah 12x/tahun, sisa di profil) + tanda Izin/Cuti di kalender + pull-to-refresh swipe tahan ke bawah + hapus tombol Kembali/Refresh + fix GPS (tombol Absen kembali aktif) + icon SVG seragam. Owner 39: tombol Permintaan Jadwal pindah ke Dashboard + Cuti di persetujuan + Kalender Jadwal di menu Shift (ketuk tanggal, ubah jadwal auto-save) + tanda Izin/Cuti di kalender + pull-to-refresh + hapus tombol Kembali/Refresh. Deploy via GitHub Actions."
+  "apkDev": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-dev-code29/absensi-dev_v1.0.0-code29.apk",
+  "notes": "Dev 29: antrean Pendaftaran (opsi 3) — form publik daftar.html, kartu Pendaftaran di Dashboard Dev + badge menunggu, layar antrean (detail lengkap), Setujui = pre-fill BUAT BARU lalu tandai disetujui + companyCode otomatis, Tolak = status ditolak. Rules registrations: create publik tervalidasi ketat, baca/ubah/hapus Dev-only. v1.0.0 — Karyawan 33 + Owner 41 + Dev 28. Owner 41: lokasi/outlet di detail tanggal Kalender Jadwal (badge biru di samping nama karyawan) + header Owner gaya wide ala Karyawan (gradien biru, logo perusahaan lingkaran ganti profile icon, tanpa logo = ikon gedung) + kartu Jadwal & Shift hanya nama + jam shift. Owner 40: kartu Jadwal & Shift di menu Shift kini hanya tampilkan nama + jam shift (nama karyawan default dihapus). Karyawan 33: Cuti ganti Ganti Shift (jatah 12x/tahun, sisa di profil) + tanda Izin/Cuti di kalender + pull-to-refresh swipe tahan ke bawah + hapus tombol Kembali/Refresh + fix GPS (tombol Absen kembali aktif) + icon SVG seragam. Owner 39: tombol Permintaan Jadwal pindah ke Dashboard + Cuti di persetujuan + Kalender Jadwal di menu Shift (ketuk tanggal, ubah jadwal auto-save) + tanda Izin/Cuti di kalender + pull-to-refresh + hapus tombol Kembali/Refresh. Deploy via GitHub Actions."
 }
