@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daftar Perusahaan — My Absensi</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#eff6ff;color:#0f172a}
+header{background:linear-gradient(160deg,#2563eb,#1e40af);color:#fff;padding:20px 16px 22px;border-radius:0 0 24px 24px}
+header .t1{font-size:13px;opacity:.9} header h1{font-size:24px;font-weight:800;margin:6px 0 0;line-height:1.2}
+header .t2{font-size:12px;opacity:.85;margin-top:6px}
+.wrap{max-width:480px;margin:0 auto;padding:14px 14px 40px}
+.card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 1px 6px rgba(15,23,42,.08);margin-top:14px}
+.mut{color:#64748b;font-size:13px;line-height:1.5}
+label{display:block;font-size:13px;font-weight:700;margin:14px 0 5px}
+input,textarea,select{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;font-family:inherit;background:#fff}
+input:focus,textarea:focus{outline:2px solid #93c5fd;border-color:#2563eb}
+textarea{min-height:70px;resize:vertical}
+.req{color:#dc2626}
+.pk{display:flex;flex-direction:column;gap:8px}
+.pk-opt{border:1.5px solid #cbd5e1;border-radius:12px;padding:12px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.pk-opt.on{border-color:#2563eb;background:#eff6ff}
+.pk-opt b{font-size:14px} .pk-opt .pr{font-size:12px;color:#475569;margin-top:2px}
+.pk-opt input{width:auto;margin-top:2px;accent-color:#2563eb}
+.btn{width:100%;padding:13px;border:0;border-radius:12px;background:#1e40af;color:#fff;font-size:16px;font-weight:800;cursor:pointer;margin-top:18px}
+.btn:disabled{opacity:.6;cursor:wait}
+.err{color:#dc2626;font-size:13px;min-height:18px;margin:8px 0 0}
+.est{background:#eff6ff;border-radius:10px;padding:10px 12px;font-size:13px;color:#1e40af;margin-top:10px;line-height:1.5}
+.ok-ic{width:64px;height:64px;border-radius:50%;background:#dcfce7;color:#16a34a;display:flex;align-items:center;justify-content:center;margin:6px auto 12px}
+.foot{text-align:center;color:#94a3b8;font-size:12px;margin-top:18px}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+<header>
+  <div class="t1">My Absensi — Miauw Project</div>
+  <h1>Daftar Perusahaan</h1>
+  <div class="t2">Coba gratis 14 hari. Kami aktifkan perusahaan + akun owner setelah pendaftaran disetujui.</div>
+</header>
+<div class="wrap">
+  <div class="card" id="formCard">
+    <p class="mut" style="margin-top:0">Isi data perusahaan sekali — tim kami akan menghubungi kamu via WhatsApp / email untuk aktivasi. Tidak ada pembayaran di tahap ini.</p>
+    <form id="fDaftar" onsubmit="return kirimDaftar(event)">
+      <label>Nama perusahaan <span class="req">*</span></label>
+      <input id="dNama" placeholder="cth PT Maju Bersama" autocomplete="organization">
+      <label>Nama owner / penanggung jawab <span class="req">*</span></label>
+      <input id="dOwner" placeholder="cth Budi Santoso" autocomplete="name">
+      <label>Email owner <span class="req">*</span></label>
+      <input id="dEmail" type="email" placeholder="owner@perusahaan.com" autocomplete="email">
+      <p class="mut" style="margin:4px 0 0">Email ini dipakai untuk login ke aplikasi Owner.</p>
+      <label>Nomor HP / WhatsApp <span class="req">*</span></label>
+      <input id="dHp" type="tel" placeholder="cth 081234567890" autocomplete="tel">
+      <label>Jumlah karyawan (perkiraan) <span class="req">*</span></label>
+      <input id="dJml" type="number" min="1" max="500" value="5" oninput="hitungEstimasi()">
+      <label>Paket yang diinginkan <span class="req">*</span></label>
+      <div class="pk" id="pkList">
+        <label class="pk-opt on"><input type="radio" name="paket" value="trial" checked onchange="hitungEstimasi()"><span><b>Trial — Gratis 14 hari</b><div class="pr">Maks 5 karyawan · semua fitur · tanpa kartu kredit</div></span></label>
+        <label class="pk-opt"><input type="radio" name="paket" value="reguler" onchange="hitungEstimasi()"><span><b>Reguler</b><div class="pr">Rp20rb / karyawan + Rp50rb maintenance / bulan · 1–10 karyawan</div></span></label>
+        <label class="pk-opt"><input type="radio" name="paket" value="bisnis" onchange="hitungEstimasi()"><span><b>Bisnis</b><div class="pr">Rp25rb / karyawan + Rp50rb maintenance / bulan · 10–50 karyawan</div></span></label>
+        <label class="pk-opt"><input type="radio" name="paket" value="profesional" onchange="hitungEstimasi()"><span><b>Profesional</b><div class="pr">Rp9jt / tahun · 50–100 karyawan · di atas 100 karyawan +Rp15rb / karyawan / tahun</div></span></label>
+      </div>
+      <div class="est" id="dEstimasi">Perkiraan biaya: Gratis — masa Trial 14 hari.</div>
+      <label>Alamat perusahaan <span class="mut">(opsional)</span></label>
+      <input id="dAlamat" placeholder="cth Jl. Raya Bogor No. 12">
+      <label>Catatan <span class="mut">(opsional)</span></label>
+      <textarea id="dCatatan" placeholder="cth Butuh training online untuk admin, dsb."></textarea>
+      <p class="err" id="dErr"></p>
+      <button class="btn" id="dBtn" type="submit">KIRIM PENDAFTARAN</button>
+      <p class="mut" style="text-align:center">Dengan mengirim pendaftaran, kamu menyetujui Syarat &amp; Ketentuan My Absensi.</p>
+    </form>
+  </div>
+  <div class="card" id="okCard" style="display:none;text-align:center">
+    <div class="ok-ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h2 style="margin:0 0 6px">Pendaftaran diterima!</h2>
+    <p class="mut">Terima kasih — pendaftaran perusahaan <b id="okNama">—</b> sudah masuk antrean. Kami akan menghubungi kamu via WhatsApp / email setelah pendaftaran disetujui, beserta kode perusahaan + akun owner untuk login.</p>
+    <p class="mut">Biasanya diproses di hari kerja yang sama.</p>
+  </div>
+  <p class="foot">My Absensi — Hadir, Terpantau, Produktif! · Miauw Project</p>
+</div>
+<script>
+var CFG = {"auth": {"emailPassword": "Enabled", "users": 0}, "billingPlan": "Spark (no-cost)", "duplicateWebApp": "ADA 2 web app bernama 'absensi-web' di project ini (verifikasi 2026-11-08 20:44 WIB, Project Settings > Your apps). Keduanya valid \u2014 apiKey/projectId sama, hanya appId beda. JANGAN hapus salah satu tanpa konfirmasi user.", "firebaseConfig": {"apiKey": "AIzaSyBp4zUPGsSo-IUM2eFsnu6l_brRWn1vipo", "appId": "1:647344582535:web:09d13cc622182a827e2d22", "authDomain": "absensi-miauw-project.firebaseapp.com", "messagingSenderId": "647344582535", "projectId": "absensi-miauw-project", "storageBucket": "absensi-miauw-project.firebasestorage.app"}, "firestore": {"location": "asia-southeast1", "mode": "production, default rules (allow read, write: if false;)"}, "note": "AppId yang dipakai di config ini = web app PERTAMA (09d13cc6), sudah ada sebelum run browser 20:42 WIB. Web app KEDUA (9db8c721) dibuat browser 20:42 WIB karena tidak melihat yang pertama. Project My Lapak (toko-mobile-app) tidak disentuh. google-services.json (untuk APK Android) belum diunduh \u2014 ambil dari Project Settings saat build.", "projectId": "absensi-miauw-project", "projectName": "Absensi Miauw Project", "projectNumber": "647344582535", "verified": "2026-11-08 20:42-20:44 WIB via browser (Console, login lutfy.aditya1st@gmail.com, tanpa kode verifikasi/CAPTCHA)", "webApp": "absensi-web (x2, duplikat)"};
+var db = null;
+try { firebase.initializeApp(CFG); db = firebase.firestore(); } catch(e) {}
+function $(id){ return document.getElementById(id); }
+function fmtRp(n){ return 'Rp ' + Number(n).toLocaleString('id-ID'); }
+function paketDipilih(){ var r = document.querySelector('input[name="paket"]:checked'); return r ? r.value : 'trial'; }
+function hitungEstimasi(){
+  var j = parseInt($('dJml').value, 10) || 0;
+  var p = paketDipilih();
+  var t = '';
+  if (p === 'trial') t = 'Perkiraan biaya: Gratis — masa Trial 14 hari.';
+  else if (p === 'reguler') t = 'Perkiraan biaya: ' + fmtRp(j*20000+50000) + ' / bulan (' + j + ' karyawan × Rp20rb + Rp50rb maintenance).';
+  else if (p === 'bisnis') t = 'Perkiraan biaya: ' + fmtRp(j*25000+50000) + ' / bulan (' + j + ' karyawan × Rp25rb + Rp50rb maintenance).';
+  else t = 'Perkiraan biaya: Rp 9.000.000 / tahun.' + (j > 100 ? ' Termasuk add-on ' + fmtRp((j-100)*15000) + ' / tahun untuk ' + (j-100) + ' karyawan di atas 100.' : '');
+  $('dEstimasi').textContent = t;
+  document.querySelectorAll('.pk-opt').forEach(function(el){
+    el.classList.toggle('on', el.querySelector('input').checked);
+  });
+}
+function kirimDaftar(ev){
+  ev.preventDefault();
+  var err = $('dErr'); err.textContent = '';
+  var nama = $('dNama').value.trim(), owner = $('dOwner').value.trim(),
+      email = $('dEmail').value.trim(), hp = $('dHp').value.trim(),
+      jml = parseInt($('dJml').value, 10) || 0, paket = paketDipilih(),
+      alamat = $('dAlamat').value.trim(), catatan = $('dCatatan').value.trim();
+  if (!nama || !owner || !email || !hp || !jml) { err.textContent = 'Lengkapi semua kolom bertanda *.'; return false; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'Format email tidak valid.'; return false; }
+  if (paket === 'trial' && jml > 5) { err.textContent = 'Trial maks 5 karyawan. Pilih paket Reguler untuk 6–10 karyawan.'; return false; }
+  if (paket === 'reguler' && jml > 10) { err.textContent = 'Reguler maks 10 karyawan. Pilih paket Bisnis untuk 10+ karyawan.'; return false; }
+  if (paket === 'bisnis' && (jml < 10 || jml > 50)) { err.textContent = 'Bisnis untuk 10–50 karyawan.'; return false; }
+  if (paket === 'profesional' && jml < 50) { err.textContent = 'Profesional min 50 karyawan.'; return false; }
+  if (!db) { err.textContent = 'Tidak bisa terhubung — periksa internet lalu coba lagi.'; return false; }
+  var btn = $('dBtn'); btn.disabled = true; btn.textContent = 'MENGIRIM...';
+  db.collection('registrations').add({
+    companyName: nama, ownerName: owner, ownerEmail: email, phone: hp,
+    jmlKaryawan: jml, paket: paket, alamat: alamat, catatan: catatan,
+    status: 'menunggu', createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  }).then(function(){
+    $('okNama').textContent = nama;
+    $('formCard').style.display = 'none';
+    $('okCard').style.display = 'block';
+    window.scrollTo(0, 0);
+  }).catch(function(e){
+    err.textContent = 'Gagal mengirim: ' + e.message;
+    btn.disabled = false; btn.textContent = 'KIRIM PENDAFTARAN';
+  });
+  return false;
+}
+hitungEstimasi();
+</script>
+</body>
+</html>
