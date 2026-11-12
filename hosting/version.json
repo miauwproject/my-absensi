@@ -1,12 +1,12 @@
 {
   "versionCode": 28,
   "versionCodeKaryawan": 33,
-  "versionCodeOwner": 39,
+  "versionCodeOwner": 40,
   "versionCodeDev": 28,
   "versionName": "1.0.0",
   "apkUrl": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-karyawan-code33/absensi-karyawan_v1.0.0-code33.apk",
   "apkKaryawan": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-karyawan-code33/absensi-karyawan_v1.0.0-code33.apk",
-  "apkOwner": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code39/absensi-owner_v1.0.0-code39.apk",
+  "apkOwner": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code40/absensi-owner_v1.0.0-code40.apk",
   "apkDev": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code28/absensi-dev_v1.0.0-code28.apk",
-  "notes": "v1.0.0 — Karyawan 33 + Owner 39 + Dev 28. Karyawan 33: Cuti ganti Ganti Shift (jatah 12x/tahun, sisa di profil) + tanda Izin/Cuti di kalender + pull-to-refresh swipe tahan ke bawah + hapus tombol Kembali/Refresh + fix GPS (tombol Absen kembali aktif) + icon SVG seragam. Owner 39: tombol Permintaan Jadwal pindah ke Dashboard + Cuti di persetujuan + Kalender Jadwal di menu Shift (ketuk tanggal, ubah jadwal auto-save) + tanda Izin/Cuti di kalender + pull-to-refresh + hapus tombol Kembali/Refresh. Deploy via GitHub Actions."
+  "notes": "v1.0.0 — Karyawan 33 + Owner 40 + Dev 28. Owner 40: kartu Jadwal & Shift di menu Shift kini hanya tampilkan nama + jam shift (nama karyawan default dihapus). Karyawan 33: Cuti ganti Ganti Shift (jatah 12x/tahun, sisa di profil) + tanda Izin/Cuti di kalender + pull-to-refresh swipe tahan ke bawah + hapus tombol Kembali/Refresh + fix GPS (tombol Absen kembali aktif) + icon SVG seragam. Owner 39: tombol Permintaan Jadwal pindah ke Dashboard + Cuti di persetujuan + Kalender Jadwal di menu Shift (ketuk tanggal, ubah jadwal auto-save) + tanda Izin/Cuti di kalender + pull-to-refresh + hapus tombol Kembali/Refresh. Deploy via GitHub Actions."
 }
