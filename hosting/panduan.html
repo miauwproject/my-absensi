@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panduan My Absensi</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#eff6ff;color:#0f172a}
+header{background:linear-gradient(160deg,#2563eb,#1e40af);color:#fff;padding:20px 16px 22px;border-radius:0 0 24px 24px}
+header .t1{font-size:13px;opacity:.9} header h1{font-size:24px;font-weight:800;margin:6px 0 0;line-height:1.2}
+header .t2{font-size:12px;opacity:.85;margin-top:6px}
+.wrap{max-width:480px;margin:0 auto;padding:14px 14px 40px}
+.card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 1px 6px rgba(15,23,42,.08);margin-top:14px}
+.card h2{font-size:17px;margin:0 0 8px}
+.mut{color:#64748b;font-size:13px;line-height:1.6}
+ol,ul{font-size:14px;line-height:1.7;padding-left:20px;margin:8px 0}
+li{margin-bottom:6px}
+.btn{display:block;text-align:center;padding:13px;border-radius:12px;background:#1e40af;color:#fff;font-size:15px;font-weight:800;text-decoration:none;margin-top:10px}
+.btn.kar{background:#b91c1c}
+.btn.ghost{background:#fff;color:#1e40af;border:1.5px solid #cbd5e1}
+.tag{display:inline-block;background:#dcfce7;color:#166534;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;margin-left:6px}
+.foot{text-align:center;color:#94a3b8;font-size:12px;margin-top:18px}
+</style>
+</head>
+<body>
+<header>
+  <div class="t1">My Absensi — Miauw Project</div>
+  <h1>Panduan Pemakaian</h1>
+  <div class="t2">Cara instal, login, dan pakai aplikasi Owner + Karyawan.</div>
+</header>
+<div class="wrap">
+
+  <div class="card">
+    <h2>Download Aplikasi</h2>
+    <p class="mut" style="margin-top:0">Dua aplikasi — instal keduanya sesuai peran. Link di bawah selalu mengarah ke versi terbaru.</p>
+    <a class="btn" id="dlOwner" href="https://github.com/miauwproject/my-absensi/releases">Download Owner <span class="tag">untuk pemilik / admin</span></a>
+    <a class="btn kar" id="dlKar" href="https://github.com/miauwproject/my-absensi/releases">Download Karyawan <span class="tag">untuk karyawan</span></a>
+    <p class="mut" id="verTxt" style="margin-top:10px">Versi terbaru: memuat…</p>
+  </div>
+
+  <div class="card">
+    <h2>1. Cara Instal (Android)</h2>
+    <ol>
+      <li>Ketuk link download di atas (atau link dari email developer).</li>
+      <li>Buka file APK yang terunduh, ketuk <b>Instal</b>.</li>
+      <li>Kalau muncul peringatan "instal dari sumber tidak dikenal", ketuk <b>Izinkan</b> / <b>Setelan</b> lalu aktifkan izinnya, lalu instal lagi.</li>
+      <li>Buka aplikasi <b>My Absensi Owner</b> atau <b>My Absensi Karyawan</b>.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>2. Cara Login</h2>
+    <ol>
+      <li>Masukkan <b>Kode Perusahaan</b> (dikirim developer via email — contoh: PKR09112601).</li>
+      <li>Masukkan <b>email</b> dan <b>password awal</b>. Password awal dikirim terpisah via WhatsApp oleh developer.</li>
+      <li>Ketuk <b>Masuk</b>. Bisa juga login dengan <b>Google</b> memakai email yang sama.</li>
+      <li><b>Segera ganti password</b> setelah login pertama (menu profil / "Lupa kata sandi?").</li>
+    </ol>
+    <p class="mut">Satu akun = satu perusahaan. Karyawan login dengan email yang didaftarkan owner.</p>
+  </div>
+
+  <div class="card">
+    <h2>3. Untuk Karyawan</h2>
+    <ul>
+      <li><b>Absen Masuk / Pulang:</b> buka app, ketuk tombol Absen. GPS harus aktif dan posisi Anda harus berada di dalam radius salah satu outlet kantor (boleh absen di outlet mana saja).</li>
+      <li><b>Lihat Jadwal &amp; Shift:</b> kalender menampilkan shift tiap tanggal, termasuk tanda Izin / Cuti yang sudah disetujui.</li>
+      <li><b>Ajukan Izin / Cuti:</b> menu Permintaan — pilih tanggal + alasan, tunggu persetujuan owner. Jatah cuti 12x per tahun (sisa tampil di profil).</li>
+      <li><b>Slip Gaji:</b> tampil setelah owner merilisnya (biasanya setelah gajian dibayar tunai). Slip bisa diunduh sebagai PDF.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>4. Untuk Owner</h2>
+    <ul>
+      <li><b>Dashboard:</b> ringkasan kehadiran hari ini, karyawan yang telat / izin / cuti, dan permintaan yang menunggu persetujuan.</li>
+      <li><b>Karyawan:</b> tambah karyawan baru (nama, jabatan, NIK, shift, gaji pokok + uang makan), ubah data, atau hapus karyawan.</li>
+      <li><b>Shift &amp; Jadwal:</b> atur jam shift; kalender jadwal — ketuk tanggal untuk melihat siapa saja yang bertugas dan mengubah shift tanggal itu.</li>
+      <li><b>Lokasi / Outlet:</b> tambah outlet baru beserta radiusnya (menu Pengaturan). Karyawan bisa absen di outlet mana saja.</li>
+      <li><b>Gaji &amp; Slip:</b> atur gaji pokok, uang makan, dan tanggal tutup buku / tanggal gajian di Pengaturan Gaji. Ketuk <b>Proses Bulan Ini</b> untuk menghitung gaji, lalu <b>Rilis Slip</b> setelah gaji dibayar tunai.</li>
+      <li><b>Laporan:</b> laporan kehadiran, keterlambatan, dan gaji per bulan (bisa diekspor).</li>
+    </ul>
+    <p class="mut">Tutup buku default tanggal 30, gajian tanggal 5 (bisa diubah di Pengaturan Gaji). Keterlambatan dicatat tapi tidak memotong gaji.</p>
+  </div>
+
+  <div class="card">
+    <h2>5. Bantuan</h2>
+    <p class="mut">Ada kendala instal, login, atau absen? Hubungi developer:</p>
+    <ul>
+      <li>Email: <b>miauwdesu.project@gmail.com</b></li>
+      <li>Instagram: <b>@miauwproject.official</b></li>
+    </ul>
+    <p class="mut">Sertakan Kode Perusahaan + screenshot layar saat melaporkan masalah.</p>
+  </div>
+
+  <div class="foot">My Absensi v1.0.0 — Miauw Project · Panduan ini untuk client My Absensi</div>
+</div>
+<script>
+(function(){
+  fetch('https://absensi-miauw-project.web.app/version.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(v){
+    if(v.apkOwner) document.getElementById('dlOwner').href=v.apkOwner;
+    if(v.apkKaryawan) document.getElementById('dlKar').href=v.apkKaryawan;
+    var t='Versi terbaru: ';
+    if(v.versionCodeOwner) t+='Owner code '+v.versionCodeOwner;
+    if(v.versionCodeKaryawan) t+=(v.versionCodeOwner?' · ':'')+'Karyawan code '+v.versionCodeKaryawan;
+    document.getElementById('verTxt').textContent=t;
+  }).catch(function(){ document.getElementById('verTxt').textContent='Versi terbaru: lihat halaman Releases.'; });
+})();
+</script>
+</body>
+</html>
