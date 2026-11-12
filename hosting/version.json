@@ -1,12 +1,12 @@
 {
   "versionCode": 28,
-  "versionCodeKaryawan": 30,
+  "versionCodeKaryawan": 31,
   "versionCodeOwner": 37,
   "versionCodeDev": 28,
   "versionName": "1.0.0",
-  "apkUrl": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-karyawan-code30/absensi-karyawan_v1.0.0-code30.apk",
-  "apkKaryawan": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-karyawan-code30/absensi-karyawan_v1.0.0-code30.apk",
+  "apkUrl": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-karyawan-code31/absensi-karyawan_v1.0.0-code31.apk",
+  "apkKaryawan": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-karyawan-code31/absensi-karyawan_v1.0.0-code31.apk",
   "apkOwner": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code37/absensi-owner_v1.0.0-code37.apk",
   "apkDev": "https://github.com/miauwproject/my-absensi/releases/download/v1.0.0-code28/absensi-dev_v1.0.0-code28.apk",
-  "notes": "v1.0.0 — Karyawan 30 + Owner 37 + Dev 28. Owner: Laporan Keterlambatan + toleransi & ambang evaluasi di Pengaturan Gaji + export Excel + Permintaan Jadwal (auto-sync). Karyawan: toleransi telat + Request Jadwal. Deploy via GitHub Actions."
+  "notes": "v1.0.0 \u2014 Karyawan 31 + Owner 37 + Dev 28. Karyawan 31: fix Request Jadwal (pre-check absen tanggal depan ditolak rules -> request tidak terkirim) + status Absen \"Belum absen\". Owner 37: Laporan Keterlambatan + toleransi & ambang evaluasi di Pengaturan Gaji + export Excel + Permintaan Jadwal (auto-sync). Deploy via GitHub Actions."
 }
